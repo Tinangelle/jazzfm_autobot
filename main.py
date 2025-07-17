@@ -26,7 +26,9 @@ async def on_voice_state_update(member, before, after):
         if after.channel and after.channel.id == TARGET_VOICE_CHANNEL_ID:
             text_channel = client.get_channel(TARGET_TEXT_CHANNEL_ID)
             if text_channel:
+                await text_channel.send("m!join")
+                await asyncio.sleep(1.5)
                 await text_channel.send("m!play http://jazzfm91.streamb.live/SB00009")
-                print("已发送播放命令。")
+                print("已发送 join 和播放命令。")
 
 client.run(TOKEN)
